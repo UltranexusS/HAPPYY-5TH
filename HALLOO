@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Monthsary Letter</title>
+  <style>
+    /* Your CSS styles here */
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Monthsary Letter</h1>
+
+    <div id="questions">
+      <div id="question1" class="question">
+        <p>Question 1: [Customize this question]</p>
+        <div class="choices">
+          <button onclick="answerQuestion('Yes')">Yes</button>
+          <button onclick="answerQuestion('No')">No</button>
+        </div>
+      </div>
+
+      <div id="question2" class="question" style="display: none;">
+        <p>Question 2: [Customize this question]</p>
+        <div class="choices">
+          <button onclick="answerQuestion('Yes')">Yes</button>
+          <button onclick="answerQuestion('No')">No</button>
+        </div>
+      </div>
+
+      <div id="question3" class="question" style="display: none;">
+        <p>Question 3: [Customize this question]</p>
+        <div class="choices">
+          <button onclick="answerQuestion('Yes')">Yes</button>
+          <button onclick="answerQuestion('No')">No</button>
+        </div>
+      </div>
+
+      <div id="question4" class="question" style="display: none;">
+        <p>Question 4: [Customize this question]</p>
+        <div class="choices">
+          <button onclick="answerQuestion('Yes')">Yes</button>
+          <button onclick="answerQuestion('No')">No</button>
+        </div>
+      </div>
+
+      <div id="question5" class="question" style="display: none;">
+        <p>Question 5: [Customize this question]</p>
+        <div class="choices">
+          <button onclick="answerQuestion('Yes')">Yes</button>
+          <button onclick="answerQuestion('No')">No</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="opinions">
+      <!-- Opinions on each question will be displayed here -->
+    </div>
+
+    <div id="continueButton" class="continue-button" style="display: none;">
+      <button onclick="showNextQuestion()">Continue</button>
+    </div>
+
+    <div id="letter" class="letter" style="display: none;">
+      <p>Dear [Recipient's Name],</p>
+      <!-- Your heartfelt monthsary letter here -->
+      <p>With love,</p>
+      <p>[Your Name]</p>
+    </div>
+
+    <script>
+      var currentQuestion = 1;
+      var questionsCount = 5; // Total number of questions
+      var opinions = [];
+
+      function answerQuestion(choice) {
+        var questionDiv = document.getElementById('question' + currentQuestion);
+        questionDiv.style.display = 'none';
+
+        var opinionDiv = document.getElementById('opinions');
+        var opinion = document.createElement('div');
+        opinion.className = 'opinion';
+        opinion.innerHTML = "Opinion on Question " + currentQuestion + ": You answered '" + choice + "'. [Customize your opinion accordingly]";
+        opinionDiv.appendChild(opinion);
+        opinions.push(opinion);
+
+        if (currentQuestion < questionsCount) {
+          currentQuestion++;
+          var nextQuestionDiv = document.getElementById('question' + currentQuestion);
+          nextQuestionDiv.style.display = 'block';
+        } else {
+          var continueButtonDiv = document.getElementById('continueButton');
+          continueButtonDiv.style.display = 'none';
+
+          var letterDiv = document.getElementById('letter');
+          letterDiv.style.display = 'block';
+        }
+      }
+
+      function showNextQuestion() {
+        var questionDiv = document.getElementById('question' + currentQuestion);
+        questionDiv.style.display = 'none';
+
+        currentQuestion++;
+        var nextQuestionDiv = document.getElementById('question' + currentQuestion);
+        nextQuestionDiv.style.display = 'block';
+      }
+
+      // Flash the first question
+      var firstQuestionDiv = document.getElementById('question1');
+      firstQuestionDiv.style.display = 'block';
+    </script>
+  </div>
+</body>
+</html>
